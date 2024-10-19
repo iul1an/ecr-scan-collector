@@ -1,0 +1,25 @@
+{
+  "version": "0",
+  "id": "1b234567-89ab-cdef-0123-456789abcdef",
+  "detail-type": "ECR Image Scan",
+  "source": "aws.ecr",
+  "account": "123456789012",
+  "time": "2024-09-30T22:36:48Z",
+  "region": "eu-west-1",
+  "resources": [
+    "arn:aws:ecr:eu-west-1:123456789012:repository/my-shiny-repo"
+  ],
+  "detail": {
+    "scan-status": "COMPLETE",
+    "repository-name": "my-shiny-repo",
+    "finding-severity-counts": {
+      "CRITICAL": 3,
+      "HIGH": 16,
+      "MEDIUM": 23,
+      "LOW": 13,
+      "INFORMATIONAL": 15
+    },
+    "image-digest": "sha256:6a5a5368e0c2d3e5909184129962d126c0f20ce69b335531f30a6b760cdcf60b",
+    "image-tags": ["latest", "stable.20240930223648"]
+  }
+}

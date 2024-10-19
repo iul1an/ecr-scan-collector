@@ -1,0 +1,132 @@
+run:
+  timeout: 5m
+
+linters-settings:
+  decorder:
+    dec-order:
+      - type
+      - const
+      - var
+      - func
+  errcheck:
+    check-type-assertions: true
+    check-blank: true
+    exclude-functions:
+      - io/ioutil.ReadFile
+      - io.Copy(*bytes.Buffer)
+      - io.Copy(os.Stdout)
+      - io.ReadAll
+      - os.Pipe
+      - strconv.ParseBool
+  funlen:
+    lines: 80
+    ignore-comments: true
+  goimports:
+    local-prefixes: iul1an/ecr-scan-collector
+  govet:
+    enable:
+      - shadow
+  makezero:
+    always: true
+  goconst:
+    min-len: 2
+    min-occurrences: 2
+  misspell:
+    locale: US
+    mode: restricted
+  mnd:
+    ignored-numbers: []
+    ignored-files: []
+    ignored-functions: []
+  lll:
+    line-length: 140
+  gocritic:
+    enabled-tags:
+      - performance
+      - style
+      - experimental
+    disabled-checks:
+      - wrapperFunc
+      - hugeParam
+      - rangeValCopy
+      - unnamedResult
+  dupl:
+    threshold: 800
+  exhaustive:
+    default-signifies-exhaustive: true
+    default-case-required: true
+  nestif:
+    min-complexity: 7
+  gci:
+    sections:
+      - standard # Standard section: captures all standard packages.
+      - default # Default section: contains all imports that could not be matched to another section type.
+      - localmodule # Local module section: contains all local packages. This section is not present unless explicitly enabled.
+  reassign:
+    patterns:
+      - ".*"
+  stylecheck:
+    # STxxxx checks in https://staticcheck.io/docs/configuration/options/#checks
+    # Default: ["*"]
+    checks: ["all", "-ST1003"]
+
+issues:
+  exclude-rules:
+    - path: _test\.go
+      linters:
+        - funlen
+    - text: declaration of "err" shadows declaration
+      linters:
+        - govet
+
+linters:
+  disable-all: true
+  fast: false
+  enable:
+    - decorder
+    - dupl
+    - errcheck
+    - errorlint
+    - exhaustive
+    - forbidigo
+    - funlen
+    - gci
+    - gochecknoinits
+    - goconst
+    - gocritic
+    - gocyclo
+    - godot
+    - gofmt
+    - gofumpt
+    - goimports
+    - gosec
+    - gosimple
+    - gosimple
+    - govet
+    - importas
+    - inamedparam
+    - interfacebloat
+    - ineffassign
+    - lll
+    - makezero
+    - misspell
+    - mnd
+    - nakedret
+    - nestif
+    - nilerr
+    - nilnil
+    - nonamedreturns
+    - perfsprint
+    - prealloc
+    - predeclared
+    - reassign
+    - staticcheck
+    - stylecheck
+    - tagalign
+    - tenv
+    - tparallel
+    - typecheck
+    - unconvert
+    - unparam
+    - unused
+    - usestdlibvars
